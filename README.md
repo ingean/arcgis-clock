@@ -17,5 +17,5 @@ Angir farge op teksten som viser ukedag og dato, f.eks:
 `dateColor=D3D3D3`
 
 ## Eksempel på bruk av parametre
-`https://ingean.github.io/time/index.html?bgColor=A9A9A9&timeColor=D3D3D3&dateColor=D3D3D3`
+`https://ingean.github.io/arcgis-clock/index.html?bgColor=A9A9A9&timeColor=D3D3D3&dateColor=D3D3D3`
 
