@@ -15,9 +15,7 @@ Eksempel:
 ## Overstyre fargetema
 Det er mulig å angi farger for bakgrunn, tid og dato separat:
 ```
-timeDisplay=D3D3D3
-dateDisplay=D3D3D3
-bgColor=32a852
+timeDisplay=D3D3D3&dateDisplay=D3D3D3&bgColor=32a852
 ```
 ## Eksempler på bruk av url-parametre
 ```
