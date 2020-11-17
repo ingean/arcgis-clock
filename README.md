@@ -1,7 +1,7 @@
 # Beskrivelse
 Visning av tid og dato som enkelt kan bygges inn i ArcGIS Dashboards.
 
-# URL Parametre
+# URL-parametre
 Webappliasjonen støtter ulike url-parametre for å endre utseende
 
 ## Themes
@@ -9,6 +9,7 @@ Applikasjonen har to innebygde fargetema som matcher ArcGIS Dashboards:
 * theme-light (standard)
 * theme-dark
 
+Eksempel:
 `theme=theme-dark`
 
 ## Det er mulig å overstyre enkelte fargevalg individuelt
