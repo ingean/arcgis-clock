@@ -19,8 +19,8 @@ Angir farge på teksten som viser tidspunkt, f.eks:
 `bgColor=32a852`
 
 ## Eksempler på bruk av url-parametre
-`
+```
 https://ingean.github.io/arcgis-clock/index.html?theme=theme-dark
 
 https://ingean.github.io/arcgis-clock/index.html?timeDisplay=000000&dateDisplay=ffffff&bgColor=32a852
-`
+```
