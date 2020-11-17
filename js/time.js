@@ -1,44 +1,57 @@
 function showTime() {
-  var date = new Date();
-  var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-  var locale = 'no-NB'
+  let date = new Date();
+  let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+  let locale = 'no-NB'
 
-  var h = date.getHours(); // 0 - 23
-  var m = date.getMinutes(); // 0 - 59
-  var s = date.getSeconds(); // 0 - 59
+  let h = date.getHours(); // 0 - 23
+  let m = date.getMinutes(); // 0 - 59
+  let s = date.getSeconds(); // 0 - 59
   
   h = (h < 10) ? "0" + h : h;
   m = (m < 10) ? "0" + m : m;
   s = (s < 10) ? "0" + s : s;
   
-  var time = h + ":" + m + ":" + s;
-  //var datestring = date.getDate() + "." + (Number(date.getMonth()) + 1) + "." + date.getFullYear();
-  
-  var datestring = date.toLocaleDateString(locale, options);
+  let time = h + ":" + m + ":" + s;  
+  let datestring = date.toLocaleDateString(locale, options);
 
-  $('#timeDisplay').html(time);
-  $('#timeDisplay').text(time);
+  document.getElementById("timeDisplay").innerText = time;
+  document.getElementById("timeDisplay").textContent = time;
+  document.getElementById("dateDisplay").innerText = datestring;
+  document.getElementById("dateDisplay").textContent = datestring;
 
-  $('#dateDisplay').html(datestring);
-  $('#dateDisplay').text(datestring);
-  //document.getElementById("timeDisplay").innerText = time;
-  //document.getElementById("timeDisplay").textContent = time;
-  
-  setTimeout(showTime, 1000);
-  
+  setTimeout(showTime, 1000);  
 }
 
 showTime();
 
+function setTheme(themeName) {
+  localStorage.setItem('theme', themeName);
+  document.documentElement.className = themeName;
+}
 
-function getURLParameters() {
-  var search = location.search.substring(1);
-  return JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+function getURLParams() {
+  let qs = window.location.search;
+  return new URLSearchParams(qs);
 }
 
 window.onload = function() {
-  var urlParams = getURLParameters();
-  document.body.style.background = '#' + urlParams.bgColor;
-  document.getElementById('timeDisplay').style.color = '#' + urlParams.timeColor;
-  document.getElementById('dateDisplay').style.color = '#' + urlParams.dateColor;
+  let params = getURLParams();
+
+  if(params.has('theme')) {
+    setTheme(params.get('theme'))
+  } else {
+    setTheme('theme-light');
+  }
+
+  setCustomColors(params); //Override themes
+}
+
+function setCustomColors(params) {
+  for (const entry of params.entries()) {
+    if (entry[0] === 'bgColor') {
+      document.getElementById('container').style.backgroundColor = `#${entry[1]}`;
+    } else {
+      document.getElementById(entry[0]).style.color = `#${entry[1]}`;
+    }  
+  }
 }
